@@ -31,6 +31,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             state.copyWith(isLoggedIn: false, isLoading: false, isError: true));
       });
     });
+    
     on<_Register>((event, emit) async {
       Either<dynamic, Exception> registerRes = await getIt<I_login>().register(
           username: event.username,

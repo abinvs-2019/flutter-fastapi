@@ -8,6 +8,6 @@ final getIt = GetIt.instance;
 
 @InjectableInit(asExtension: false)
 Future<void> configureDependencies() async {
-  getIt.registerLazySingleton<I_login>(() => LoginApi());
+  getIt.registerLazySingleton<I_login>(() => Api());
   await init(getIt, environment: Environment.prod);
 }
