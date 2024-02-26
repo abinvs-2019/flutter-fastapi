@@ -7,7 +7,8 @@ class ProfileState with _$ProfileState {
       bool? isLoggedIn,
       required bool isError,
       bool? isNewUser,
-      String? username}) = _ProfileState;
+      String? username,
+      UserDataModel? dataModel}) = _ProfileState;
 
   factory ProfileState.initial() {
     return ProfileState(isLoading: false, isError: false, isNewUser: false);

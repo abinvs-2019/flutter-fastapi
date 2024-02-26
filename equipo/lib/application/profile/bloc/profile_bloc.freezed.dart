@@ -18,20 +18,20 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ProfileEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getProfile,
-    required TResult Function() updateProfile,
+    required TResult Function(String username) getProfile,
+    required TResult Function(UserDataModel dataModel) updateProfile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getProfile,
-    TResult? Function()? updateProfile,
+    TResult? Function(String username)? getProfile,
+    TResult? Function(UserDataModel dataModel)? updateProfile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getProfile,
-    TResult Function()? updateProfile,
+    TResult Function(String username)? getProfile,
+    TResult Function(UserDataModel dataModel)? updateProfile,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -79,6 +79,8 @@ abstract class _$$GetProfileImplCopyWith<$Res> {
   factory _$$GetProfileImplCopyWith(
           _$GetProfileImpl value, $Res Function(_$GetProfileImpl) then) =
       __$$GetProfileImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String username});
 }
 
 /// @nodoc
@@ -88,54 +90,79 @@ class __$$GetProfileImplCopyWithImpl<$Res>
   __$$GetProfileImplCopyWithImpl(
       _$GetProfileImpl _value, $Res Function(_$GetProfileImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? username = null,
+  }) {
+    return _then(_$GetProfileImpl(
+      null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$GetProfileImpl implements _GetProfile {
-  const _$GetProfileImpl();
+  const _$GetProfileImpl(this.username);
+
+  @override
+  final String username;
 
   @override
   String toString() {
-    return 'ProfileEvent.getProfile()';
+    return 'ProfileEvent.getProfile(username: $username)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetProfileImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$GetProfileImpl &&
+            (identical(other.username, username) ||
+                other.username == username));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, username);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetProfileImplCopyWith<_$GetProfileImpl> get copyWith =>
+      __$$GetProfileImplCopyWithImpl<_$GetProfileImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getProfile,
-    required TResult Function() updateProfile,
+    required TResult Function(String username) getProfile,
+    required TResult Function(UserDataModel dataModel) updateProfile,
   }) {
-    return getProfile();
+    return getProfile(username);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getProfile,
-    TResult? Function()? updateProfile,
+    TResult? Function(String username)? getProfile,
+    TResult? Function(UserDataModel dataModel)? updateProfile,
   }) {
-    return getProfile?.call();
+    return getProfile?.call(username);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getProfile,
-    TResult Function()? updateProfile,
+    TResult Function(String username)? getProfile,
+    TResult Function(UserDataModel dataModel)? updateProfile,
     required TResult orElse(),
   }) {
     if (getProfile != null) {
-      return getProfile();
+      return getProfile(username);
     }
     return orElse();
   }
@@ -173,7 +200,12 @@ class _$GetProfileImpl implements _GetProfile {
 }
 
 abstract class _GetProfile implements ProfileEvent {
-  const factory _GetProfile() = _$GetProfileImpl;
+  const factory _GetProfile(final String username) = _$GetProfileImpl;
+
+  String get username;
+  @JsonKey(ignore: true)
+  _$$GetProfileImplCopyWith<_$GetProfileImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -181,6 +213,10 @@ abstract class _$$UpdateProfileImplCopyWith<$Res> {
   factory _$$UpdateProfileImplCopyWith(
           _$UpdateProfileImpl value, $Res Function(_$UpdateProfileImpl) then) =
       __$$UpdateProfileImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UserDataModel dataModel});
+
+  $UserDataModelCopyWith<$Res> get dataModel;
 }
 
 /// @nodoc
@@ -190,54 +226,87 @@ class __$$UpdateProfileImplCopyWithImpl<$Res>
   __$$UpdateProfileImplCopyWithImpl(
       _$UpdateProfileImpl _value, $Res Function(_$UpdateProfileImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? dataModel = null,
+  }) {
+    return _then(_$UpdateProfileImpl(
+      null == dataModel
+          ? _value.dataModel
+          : dataModel // ignore: cast_nullable_to_non_nullable
+              as UserDataModel,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserDataModelCopyWith<$Res> get dataModel {
+    return $UserDataModelCopyWith<$Res>(_value.dataModel, (value) {
+      return _then(_value.copyWith(dataModel: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$UpdateProfileImpl implements _UpdateProfile {
-  const _$UpdateProfileImpl();
+  const _$UpdateProfileImpl(this.dataModel);
+
+  @override
+  final UserDataModel dataModel;
 
   @override
   String toString() {
-    return 'ProfileEvent.updateProfile()';
+    return 'ProfileEvent.updateProfile(dataModel: $dataModel)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$UpdateProfileImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateProfileImpl &&
+            (identical(other.dataModel, dataModel) ||
+                other.dataModel == dataModel));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, dataModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateProfileImplCopyWith<_$UpdateProfileImpl> get copyWith =>
+      __$$UpdateProfileImplCopyWithImpl<_$UpdateProfileImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getProfile,
-    required TResult Function() updateProfile,
+    required TResult Function(String username) getProfile,
+    required TResult Function(UserDataModel dataModel) updateProfile,
   }) {
-    return updateProfile();
+    return updateProfile(dataModel);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getProfile,
-    TResult? Function()? updateProfile,
+    TResult? Function(String username)? getProfile,
+    TResult? Function(UserDataModel dataModel)? updateProfile,
   }) {
-    return updateProfile?.call();
+    return updateProfile?.call(dataModel);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getProfile,
-    TResult Function()? updateProfile,
+    TResult Function(String username)? getProfile,
+    TResult Function(UserDataModel dataModel)? updateProfile,
     required TResult orElse(),
   }) {
     if (updateProfile != null) {
-      return updateProfile();
+      return updateProfile(dataModel);
     }
     return orElse();
   }
@@ -275,7 +344,13 @@ class _$UpdateProfileImpl implements _UpdateProfile {
 }
 
 abstract class _UpdateProfile implements ProfileEvent {
-  const factory _UpdateProfile() = _$UpdateProfileImpl;
+  const factory _UpdateProfile(final UserDataModel dataModel) =
+      _$UpdateProfileImpl;
+
+  UserDataModel get dataModel;
+  @JsonKey(ignore: true)
+  _$$UpdateProfileImplCopyWith<_$UpdateProfileImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -285,6 +360,7 @@ mixin _$ProfileState {
   bool get isError => throw _privateConstructorUsedError;
   bool? get isNewUser => throw _privateConstructorUsedError;
   String? get username => throw _privateConstructorUsedError;
+  UserDataModel? get dataModel => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProfileStateCopyWith<ProfileState> get copyWith =>
@@ -302,7 +378,10 @@ abstract class $ProfileStateCopyWith<$Res> {
       bool? isLoggedIn,
       bool isError,
       bool? isNewUser,
-      String? username});
+      String? username,
+      UserDataModel? dataModel});
+
+  $UserDataModelCopyWith<$Res>? get dataModel;
 }
 
 /// @nodoc
@@ -323,6 +402,7 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
     Object? isError = null,
     Object? isNewUser = freezed,
     Object? username = freezed,
+    Object? dataModel = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -345,7 +425,23 @@ class _$ProfileStateCopyWithImpl<$Res, $Val extends ProfileState>
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String?,
+      dataModel: freezed == dataModel
+          ? _value.dataModel
+          : dataModel // ignore: cast_nullable_to_non_nullable
+              as UserDataModel?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserDataModelCopyWith<$Res>? get dataModel {
+    if (_value.dataModel == null) {
+      return null;
+    }
+
+    return $UserDataModelCopyWith<$Res>(_value.dataModel!, (value) {
+      return _then(_value.copyWith(dataModel: value) as $Val);
+    });
   }
 }
 
@@ -362,7 +458,11 @@ abstract class _$$ProfileStateImplCopyWith<$Res>
       bool? isLoggedIn,
       bool isError,
       bool? isNewUser,
-      String? username});
+      String? username,
+      UserDataModel? dataModel});
+
+  @override
+  $UserDataModelCopyWith<$Res>? get dataModel;
 }
 
 /// @nodoc
@@ -381,6 +481,7 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
     Object? isError = null,
     Object? isNewUser = freezed,
     Object? username = freezed,
+    Object? dataModel = freezed,
   }) {
     return _then(_$ProfileStateImpl(
       isLoading: null == isLoading
@@ -403,6 +504,10 @@ class __$$ProfileStateImplCopyWithImpl<$Res>
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String?,
+      dataModel: freezed == dataModel
+          ? _value.dataModel
+          : dataModel // ignore: cast_nullable_to_non_nullable
+              as UserDataModel?,
     ));
   }
 }
@@ -415,7 +520,8 @@ class _$ProfileStateImpl implements _ProfileState {
       this.isLoggedIn,
       required this.isError,
       this.isNewUser,
-      this.username});
+      this.username,
+      this.dataModel});
 
   @override
   final bool isLoading;
@@ -427,10 +533,12 @@ class _$ProfileStateImpl implements _ProfileState {
   final bool? isNewUser;
   @override
   final String? username;
+  @override
+  final UserDataModel? dataModel;
 
   @override
   String toString() {
-    return 'ProfileState(isLoading: $isLoading, isLoggedIn: $isLoggedIn, isError: $isError, isNewUser: $isNewUser, username: $username)';
+    return 'ProfileState(isLoading: $isLoading, isLoggedIn: $isLoggedIn, isError: $isError, isNewUser: $isNewUser, username: $username, dataModel: $dataModel)';
   }
 
   @override
@@ -446,12 +554,14 @@ class _$ProfileStateImpl implements _ProfileState {
             (identical(other.isNewUser, isNewUser) ||
                 other.isNewUser == isNewUser) &&
             (identical(other.username, username) ||
-                other.username == username));
+                other.username == username) &&
+            (identical(other.dataModel, dataModel) ||
+                other.dataModel == dataModel));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, isLoading, isLoggedIn, isError, isNewUser, username);
+  int get hashCode => Object.hash(runtimeType, isLoading, isLoggedIn, isError,
+      isNewUser, username, dataModel);
 
   @JsonKey(ignore: true)
   @override
@@ -466,7 +576,8 @@ abstract class _ProfileState implements ProfileState {
       final bool? isLoggedIn,
       required final bool isError,
       final bool? isNewUser,
-      final String? username}) = _$ProfileStateImpl;
+      final String? username,
+      final UserDataModel? dataModel}) = _$ProfileStateImpl;
 
   @override
   bool get isLoading;
@@ -478,6 +589,8 @@ abstract class _ProfileState implements ProfileState {
   bool? get isNewUser;
   @override
   String? get username;
+  @override
+  UserDataModel? get dataModel;
   @override
   @JsonKey(ignore: true)
   _$$ProfileStateImplCopyWith<_$ProfileStateImpl> get copyWith =>

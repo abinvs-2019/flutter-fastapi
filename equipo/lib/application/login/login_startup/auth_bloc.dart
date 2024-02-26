@@ -23,6 +23,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
       Either<dynamic, Exception> loginRes = await getIt<I_login>()
           .login(username: event.username, password: event.password);
+
       loginRes.fold((l) {
         emit(
             state.copyWith(isLoggedIn: true, isLoading: false, isError: false));
@@ -31,7 +32,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             state.copyWith(isLoggedIn: false, isLoading: false, isError: true));
       });
     });
-    
+
     on<_Register>((event, emit) async {
       Either<dynamic, Exception> registerRes = await getIt<I_login>().register(
           username: event.username,
