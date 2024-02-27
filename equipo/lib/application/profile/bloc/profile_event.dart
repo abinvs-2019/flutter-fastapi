@@ -2,7 +2,7 @@ part of 'profile_bloc.dart';
 
 @freezed
 class ProfileEvent with _$ProfileEvent {
-  const factory ProfileEvent.getProfile(String username) = _GetProfile;
+  const factory ProfileEvent.getProfile() = _GetProfile;
   const factory ProfileEvent.updateProfile(UserDataModel dataModel) =
       _UpdateProfile;
 }

@@ -18,19 +18,19 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ProfileEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String username) getProfile,
+    required TResult Function() getProfile,
     required TResult Function(UserDataModel dataModel) updateProfile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String username)? getProfile,
+    TResult? Function()? getProfile,
     TResult? Function(UserDataModel dataModel)? updateProfile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String username)? getProfile,
+    TResult Function()? getProfile,
     TResult Function(UserDataModel dataModel)? updateProfile,
     required TResult orElse(),
   }) =>
@@ -79,8 +79,6 @@ abstract class _$$GetProfileImplCopyWith<$Res> {
   factory _$$GetProfileImplCopyWith(
           _$GetProfileImpl value, $Res Function(_$GetProfileImpl) then) =
       __$$GetProfileImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String username});
 }
 
 /// @nodoc
@@ -90,79 +88,54 @@ class __$$GetProfileImplCopyWithImpl<$Res>
   __$$GetProfileImplCopyWithImpl(
       _$GetProfileImpl _value, $Res Function(_$GetProfileImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? username = null,
-  }) {
-    return _then(_$GetProfileImpl(
-      null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$GetProfileImpl implements _GetProfile {
-  const _$GetProfileImpl(this.username);
-
-  @override
-  final String username;
+  const _$GetProfileImpl();
 
   @override
   String toString() {
-    return 'ProfileEvent.getProfile(username: $username)';
+    return 'ProfileEvent.getProfile()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$GetProfileImpl &&
-            (identical(other.username, username) ||
-                other.username == username));
+        (other.runtimeType == runtimeType && other is _$GetProfileImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, username);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$GetProfileImplCopyWith<_$GetProfileImpl> get copyWith =>
-      __$$GetProfileImplCopyWithImpl<_$GetProfileImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String username) getProfile,
+    required TResult Function() getProfile,
     required TResult Function(UserDataModel dataModel) updateProfile,
   }) {
-    return getProfile(username);
+    return getProfile();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String username)? getProfile,
+    TResult? Function()? getProfile,
     TResult? Function(UserDataModel dataModel)? updateProfile,
   }) {
-    return getProfile?.call(username);
+    return getProfile?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String username)? getProfile,
+    TResult Function()? getProfile,
     TResult Function(UserDataModel dataModel)? updateProfile,
     required TResult orElse(),
   }) {
     if (getProfile != null) {
-      return getProfile(username);
+      return getProfile();
     }
     return orElse();
   }
@@ -200,12 +173,7 @@ class _$GetProfileImpl implements _GetProfile {
 }
 
 abstract class _GetProfile implements ProfileEvent {
-  const factory _GetProfile(final String username) = _$GetProfileImpl;
-
-  String get username;
-  @JsonKey(ignore: true)
-  _$$GetProfileImplCopyWith<_$GetProfileImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory _GetProfile() = _$GetProfileImpl;
 }
 
 /// @nodoc
@@ -283,7 +251,7 @@ class _$UpdateProfileImpl implements _UpdateProfile {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String username) getProfile,
+    required TResult Function() getProfile,
     required TResult Function(UserDataModel dataModel) updateProfile,
   }) {
     return updateProfile(dataModel);
@@ -292,7 +260,7 @@ class _$UpdateProfileImpl implements _UpdateProfile {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String username)? getProfile,
+    TResult? Function()? getProfile,
     TResult? Function(UserDataModel dataModel)? updateProfile,
   }) {
     return updateProfile?.call(dataModel);
@@ -301,7 +269,7 @@ class _$UpdateProfileImpl implements _UpdateProfile {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String username)? getProfile,
+    TResult Function()? getProfile,
     TResult Function(UserDataModel dataModel)? updateProfile,
     required TResult orElse(),
   }) {

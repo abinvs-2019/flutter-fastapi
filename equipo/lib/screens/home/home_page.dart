@@ -1,5 +1,6 @@
 import 'package:equipo/application/profile/bloc/profile_bloc.dart';
 import 'package:equipo/core/injection.dart';
+import 'package:equipo/domain/model/userDataModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -103,7 +104,18 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: TextStyle(fontSize: 16.0),
                       ),
                 _isEditing
-                    ? ElevatedButton(onPressed: () {}, child: Text("Edit"))
+                    ? ElevatedButton(
+                        onPressed: () {
+                          getIt<ProfileBloc>().add(ProfileEvent.updateProfile(
+                              UserDataModel(
+                                  username: _usernameController.text,
+                                  email: _emailController.text,
+                                  fullName: _emailController.text,
+                                  password: _passwordController.text)));
+
+                          Navigator.pop(context);
+                        },
+                        child: Text("Edit"))
                     : Container()
               ],
             ),
